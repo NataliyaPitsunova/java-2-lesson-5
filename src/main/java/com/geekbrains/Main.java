@@ -20,7 +20,8 @@ public class Main {
         for (int i = 0; i < size; i++) {
             arr[i] = (float) (arr[i] * Math.sin(0.2f + i / 5) * Math.cos(0.2f + i / 5) * Math.cos(0.4f + i / 2));
         }
-        System.out.println("Время работы:"+(System.currentTimeMillis() - a));
+        System.out.println("Время работы 1 метода:" + (System.currentTimeMillis() - a));
+        System.out.println();
     }
 
     public static void arraySecond() throws InterruptedException {
@@ -35,8 +36,8 @@ public class Main {
         float[] a2 = new float[h];
         System.arraycopy(arr, 0, a1, 0, h);
         System.arraycopy(arr, h, a2, 0, h);
-        all=System.currentTimeMillis() - a;
-        System.out.println("Время разбивки на 2 массива:"+ all);
+        all = System.currentTimeMillis() - a;
+        System.out.println("Время разбивки на 2 массива:" + all);
 
         a = System.currentTimeMillis();
 
@@ -61,29 +62,27 @@ public class Main {
 
         innerThread1.start();
         innerThread1.join();
-        System.out.println("Время прогонки 1 массива:"+ (System.currentTimeMillis() - a));
-        all+=System.currentTimeMillis() - a;
+        System.out.println("Время прогонки 1 массива:" + (System.currentTimeMillis() - a));
+        all += System.currentTimeMillis() - a;
         long timeARR = System.currentTimeMillis();
 
 
         innerThread2.start();
         innerThread2.join();
-        System.out.println("Время прогонки 1 массива:"+ (System.currentTimeMillis() - timeARR));
-        all+=System.currentTimeMillis() - timeARR;
-        a=System.currentTimeMillis();
+        System.out.println("Время прогонки 2 массива:" + (System.currentTimeMillis() - timeARR));
+        all += System.currentTimeMillis() - timeARR;
+        a = System.currentTimeMillis();
 
 
         System.arraycopy(a1, 0, arr, 0, h);
         System.arraycopy(a2, 0, arr, h, h);
 
-        System.out.println("Время склейки массива:"+ (System.currentTimeMillis() - a));
-        all+=System.currentTimeMillis() - a;
-        System.out.println("Общее время 2 метода:"+ all);
+        System.out.println("Время склейки массива:" + (System.currentTimeMillis() - a));
+        all += System.currentTimeMillis() - a;
+        System.out.println();
+        System.out.println("Общее время 2 метода:" + all);
 
     }
-
-
-
 
 
 }
